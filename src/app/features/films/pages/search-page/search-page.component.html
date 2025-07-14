@@ -1,0 +1,19 @@
+<mat-paginator [length]="totalResults()" [pageSize]="20" (page)="onPageChange($event)" [pageIndex]="pageIndex()"
+    [hidePageSize]="true">
+</mat-paginator>
+
+<section class=" container">
+    @if (searchTerm() !== '') {
+    <h2>Resultados para "<strong>{{ searchTerm() }}</strong>"</h2>
+    }
+
+    @if (movies().length > 0) {
+    <div class="search-results-container">
+        @for (movie of movies(); track movie.id) {
+        <app-film-card [item]="movie" />
+        }
+    </div>
+    } @else {
+    <p>No se encontraron resultados.</p>
+    }
+</section>

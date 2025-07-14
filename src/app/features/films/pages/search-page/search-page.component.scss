@@ -1,0 +1,13 @@
+@import "./../../../../../styles/_variables.scss";
+@import "./../../../../../styles/styles.scss";
+
+.container {
+  padding: 2rem 0;
+
+  .search-results-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+}
