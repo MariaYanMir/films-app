@@ -1,0 +1,42 @@
+@if (movie()) {
+<div class="film-detail" [style.background-image]="backdropImage()">
+    <div class="container">
+        <div class=" film-detail__poster"><img class="poster" [src]="posterPath()" alt=""></div>
+        <div>
+            <div class="film-detail__info">
+                <h1>{{ movie()!.title }} <span>({{ year()}})</span></h1>
+                <div class="film-detail__meta"> {{ movie()?.release_date | date: 'dd/MM/yyyy'}}
+                    <ul>
+                        @for (genre of movie()?.genres; track genre.id) {
+                        <li> {{genre.name}}</li>
+                        }
+                    </ul>
+                    <span>{{movie()!.runtime | runtime}}</span>
+                </div>
+            </div>
+            <div class="film-detail__percent">
+                <h3>Puntuación de los usuarios</h3>
+                <circle-progress [percent]="votePercentage()" [title]="votePercentage() + '%'" [radius]="30"
+                    [outerStrokeWidth]="4" [innerStrokeWidth]="2" [outerStrokeColor]="'#4caf50'"
+                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="300" [showTitle]="true"
+                    [showUnits]="false" [showSubtitle]="false" [titleFontSize]="'16'" [titleColor]="'white'"
+                    [titleFontWeight]="'bold'"></circle-progress>
+            </div>
+            <div class="film-detail__overview">
+                @if(movie()?.tagline) {
+                <p class="film-detail__tagline"> {{ movie()?.tagline}}</p>
+                }
+                @if(movie()?.overview) {
+                <h3>Vista general</h3>
+                <p>{{ movie()?.overview}}</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cast-container container">
+    <h2>Reparto principal</h2>
+    <app-film-carousel [items]="movie()!.cast"></app-film-carousel>
+</div>
+
+}

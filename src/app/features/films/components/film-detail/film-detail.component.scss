@@ -1,0 +1,66 @@
+@import "./../../../../../styles/_variables.scss";
+
+@import "./../../../../../styles/styles.scss";
+
+.film-detail {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 3rem 0;
+
+  .container {
+    display: flex;
+    gap: 3rem;
+  }
+
+  h1 span {
+    opacity: 0.8;
+    font-weight: normal;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style-type: none;
+
+        &::after {
+          content: ",";
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  &__percent {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h3 {
+      max-width: 150px;
+      line-height: 1.3;
+    }
+  }
+
+  &__tagline {
+    font-style: italic;
+    opacity: 0.8;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+}
+
+.cast-container {
+  padding: 3rem 0;
+}
