@@ -1,0 +1,15 @@
+<header>
+    <div class="container">
+        <img [routerLink]="''" src="./../../../../assets/blue_short_tmdb_logo.svg" alt="TMDB logo">
+
+        <button mat-button [matMenuTriggerFor]="aboveMenu">Películas</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+            @for (section of submenuSections; track section) {
+            <a mat-menu-item [routerLink]="['/movies', section.key]">
+                {{ section.label }}
+            </a>
+            }
+        </mat-menu>
+    </div>
+    <app-search-bar></app-search-bar>
+</header>
