@@ -1,0 +1,87 @@
+<form class="form-container" [formGroup]="moviesFilters">
+    <mat-expansion-panel class="sort-container">
+        <mat-expansion-panel-header>
+            <mat-panel-title> Ordenar </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+            <mat-label>Ordenar resultados por:</mat-label>
+            <mat-select formControlName="sort_by">
+                @for(orderOption of filmOrderOptions; track orderOption.label) {
+                <mat-option [value]="orderOption.value">{{orderOption.label}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="filters-container">
+        <mat-expansion-panel-header>
+            <mat-panel-title> Filtros</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="filters-container__dates">
+            <p>Fechas de estreno</p>
+            <mat-form-field>
+                <mat-label>Desde</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="release_date_gte">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Hasta</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="release_date_lte">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <p class="filters-container__genres">Géneros</p>
+            <mat-chip-set aria-label="Fish selection">
+                @for(genre of allGenres(); track genre.id) {
+                <mat-chip [class.selected]="isGenreSelected(genre.id)"
+                    (click)="toggleGenre(genre.id)">{{genre.name}}</mat-chip>
+                }
+            </mat-chip-set>
+        </div>
+        <div class="filters-container__languages">
+            <p>Idioma original</p>
+            <mat-form-field>
+                <mat-select formControlName="with_original_language">
+                    @for(lang of languages(); track lang.code) { <mat-option [value]="lang.code">
+                        {{ lang.label }}
+                    </mat-option>}
+
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filters-container__slider">
+            <p>Puntuación mínima </p>
+            <mat-slider min="0" max="10" step="1" thumbLabel showTickMarks discrete> <input matSliderThumb
+                    formControlName="vote_average_gte">
+            </mat-slider>
+            <label id="example-name-label" class="value">{{
+                moviesFilters.get('vote_average_gte')?.value }}</label>
+        </div>
+        <div class="filters-container__slider">
+            <p>Votos mínimos </p>
+            <mat-slider min="0" max="500" step="50" thumbLabel tickInterval="50" showTickMarks discrete>
+                <input matSliderThumb formControlName="vote_count_gte">
+            </mat-slider>
+            <label id="example-name-label" class="value">{{
+                moviesFilters.get('vote_count_gte')?.value }}</label>
+
+        </div>
+        <div class="filters-container__slider">
+            <p>Duración máxima (minutos)</p>
+            <mat-slider step=" 15" min="0" max="400" thumbLabel showTickMarks discrete>
+                <input matSliderThumb formControlName='with_runtime_lte'>
+            </mat-slider>
+            <label id="example-name-label" class="value">{{
+                moviesFilters.get('with_runtime_lte')?.value }}</label>
+        </div>
+    </mat-expansion-panel>
+
+</form>
+
+<button class="btn" mat-raised-button (click)="onSearch()">
+    Buscar
+</button>
