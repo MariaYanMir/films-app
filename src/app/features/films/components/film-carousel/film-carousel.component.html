@@ -1,0 +1,7 @@
+<div class="carousel-wrapper" [class.show-left-fade]="showLeftFade()" [class.show-right-fade]="showRightFade()">
+    <div class="carousel-track" #scrollContainer (scroll)="onScroll()">
+        @for (item of items(); track item.id) {
+        <app-film-card [item]="item" />
+        }
+    </div>
+</div>
