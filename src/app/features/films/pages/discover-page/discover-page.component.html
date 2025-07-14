@@ -1,0 +1,14 @@
+<mat-paginator [length]="totalResults()" [pageSize]="20" (page)="onPageChange($event)" [pageIndex]="pageIndex()"
+    [hidePageSize]="true">
+</mat-paginator>
+<div class="movies-page-container container">
+    <app-movie-filter-panel></app-movie-filter-panel>
+    <div>
+        <h1>{{categoryLabel()}}</h1>
+        <div class=" movies-list-container">
+            @for (movie of movies(); track movie.id) {
+            <app-film-card [discoverPage]="true" [item]="movie"></app-film-card>
+            }
+        </div>
+    </div>
+</div>

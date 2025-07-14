@@ -1,0 +1,24 @@
+@import "./../../../../../styles/_variables.scss";
+@import "./../../../../../styles/styles.scss";
+
+.movies-page-container {
+  display: flex;
+  padding: 2rem 0;
+  gap: 2rem;
+
+  app-movie-filter-panel {
+    width: 25%;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .movies-list-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    overflow: hidden;
+    flex-direction: row;
+  }
+}
