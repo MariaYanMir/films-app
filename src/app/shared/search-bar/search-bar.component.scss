@@ -1,0 +1,29 @@
+@import "./../../../styles/_variables.scss";
+
+@import "./../../../styles/styles.scss";
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+
+  &:focus {
+    border-color: #0d253f;
+    box-shadow: 0 0 0 2px rgba(13, 37, 63, 0.2);
+  }
+}
+
+.title-suggested-container {
+  li {
+    list-style-type: none;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    padding: 0.5rem;
+
+    &:hover {
+      color: $color-muted;
+    }
+  }
+}

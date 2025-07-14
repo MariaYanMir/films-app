@@ -1,0 +1,13 @@
+<div class="container">
+    <input type="search" [formControl]="searchControl" (keyup.enter)="onNavigate()" class="search-input"
+        placeholder="Buscar películas..." />
+
+    @if (suggestedMovies()) {
+    <ul class="title-suggested-container">
+        @for(movie of suggestedMovies(); track movie.id) {
+        <li class="title-suggested"><a (click)="onNavigateToDetail(movie.id)">{{movie.title}} </a>
+        </li>
+        }
+    </ul>
+    }
+</div>
