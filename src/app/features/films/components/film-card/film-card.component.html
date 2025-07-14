@@ -1,0 +1,26 @@
+<a class="film-card-link" *ngIf="isFilm(); else castCard" [routerLink]="['/movie', filmItem().id]">
+    <article class="film-card" [class.film-card--discover]="discoverPage()">
+        <div class="card__poster">
+            <img class="poster" [src]="posterPath()" alt="" loading="lazy" (error)="onImgError($event)" />
+            <circle-progress [percent]="votePercentage()" [title]="votePercentage() + '%'" [radius]="20"
+                [outerStrokeWidth]="4" [innerStrokeWidth]="0" [outerStrokeColor]="'#4caf50'"
+                [innerStrokeColor]="'#e7e8ea'" [animation]="false" [showTitle]="true" [showUnits]="false"
+                [showSubtitle]="false" [titleFontSize]="'12'" [titleColor]="'white'" [titleFontWeight]="'bold'"
+                [backgroundColor]="'#0d253f'"></circle-progress>
+        </div>
+        <h4 class="card__title">{{ filmItem().title }}</h4>
+        <p class="card__date">
+            {{ filmItem().release_date | date: 'dd/MM/yyyy' }}
+        </p>
+    </article>
+</a>
+
+<ng-template #castCard>
+    <article class="cast-member-card">
+        <div class="card__poster">
+            <img class="poster" [src]="posterPath()" alt="" loading="lazy" (error)="onImgError($event)" />
+        </div>
+        <h4 class="card__title">{{ castMember().name }}</h4>
+        <p class="card__date"> {{ castMember().character }}</p>
+    </article>
+</ng-template>

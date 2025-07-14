@@ -1,0 +1,60 @@
+@import "./../../../../../styles/_variables.scss";
+@import "./../../../../../styles/styles.scss";
+
+.film-card,
+.crew-member-card {
+  max-width: 200px;
+  min-width: 200px;
+  margin-bottom: 2rem;
+}
+
+.card {
+  margin: 0 auto;
+  flex: 1;
+
+  width: 200px;
+  overflow: hidden;
+
+  p {
+    text-wrap: wrap;
+  }
+
+  &__poster {
+    position: relative;
+    margin-bottom: 2rem;
+    width: 200px;
+    height: 300px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    circle-progress {
+      position: absolute;
+      bottom: -25px;
+      left: 8px;
+    }
+  }
+
+  &__title {
+    line-height: 1.3;
+    margin-bottom: 0.3rem !important;
+  }
+
+  &__date {
+    color: $color-muted;
+  }
+
+  &--discover {
+    img {
+      height: 300px;
+    }
+  }
+}
+
+.cast-member-card {
+  .card__poster {
+    margin-bottom: 1rem;
+  }
+}
